@@ -1,17 +1,4 @@
-<!doctype html>
-<html lang="fa" dir="rtl">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="public/css/bootstrap.rtl.min.css">
-    <link rel="stylesheet" href="public/css/fonts.css">
-
-    <title>صفحه ثبت نام</title>
-</head>
-<body>
+<?php include "view/header.php"?>
 <div class="container">
     <div class="row">
         <div class="col-md-6 mx-auto my-5">
@@ -25,6 +12,12 @@
                 <div class="mb-3">
                     <input type="email" class="form-control" id="email" name="email" placeholder="مثال: reza@gmail.com" required>
                 </div>
+                <?php
+                if( !empty( $_REQUEST['FailedMessage'] ) )
+                {
+                    echo sprintf( '<p class="text-danger fw-bold">%s</p>', $_REQUEST['FailedMessage'] );
+                }
+                ?>
                 <label for="password" class="form-label">رمز عبور</label>
                 <div class="mb-3">
                     <input type="password" class="form-control" id="password" name="password" placeholder="مثال: 123456" required>

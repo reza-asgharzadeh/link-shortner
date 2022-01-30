@@ -6,20 +6,7 @@ use App\Controller\LinkController;
     $links = new LinkController();
     $links = $links->getLinks($sessionId);
 ?>
-<!doctype html>
-<html lang="fa" dir="rtl">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="public/css/bootstrap.rtl.min.css">
-    <link rel="stylesheet" href="public/css/fonts.css">
-
-    <title>پنل مدیریت لینک</title>
-</head>
-<body>
+<?php include "view/header.php"?>
 <div class="container">
     <div class="d-flex justify-content-between mt-3">
         <div><h4 class="mb-5 text-center text-muted">پنل ایجاد و مدیریت لینک</h4></div>
