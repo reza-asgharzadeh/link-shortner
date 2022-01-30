@@ -2,7 +2,7 @@
 return [
     "db" => [
         "servername" => "localhost",
-        "dbname" => "link-shortner",
+        "dbname" => "link",
         "username" => "root",
         "password" => ""
     ]
