@@ -1,10 +1,14 @@
 <?php
+require "bootstrap/autoload.php";
 use App\Controller\LinkController;
-    require "bootstrap/autoload.php";
+if (isset($_SESSION['email'])) {
     $sessionEmail = $_SESSION['email'];
     $sessionId = $_SESSION['id'];
     $links = new LinkController();
     $links = $links->getLinks($sessionId);
+} else {
+    header("Location: login.php");
+}
 ?>
 <?php include "view/header.php"?>
 <div class="container">
@@ -38,9 +42,9 @@ use App\Controller\LinkController;
             </tbody>
         </table>
         <div class="col-md-6">
-            <form action="panel.php" method="post">
+            <form action="check/create-link.php" method="post">
                 <div class="mb-3">
-                    <input type="text" class="form-control" name="original_link" placeholder="لینک اصلی را وارد کنید ..." required>
+                    <input type="text" class="form-control" dir="ltr" name="original_link" placeholder="example.com/url-short-test-aparat-active-link" required>
                 </div>
                 <button type="submit" name="submit" class="btn btn-primary">ایجاد لینک کوتاه</button>
             </form>
@@ -48,11 +52,5 @@ use App\Controller\LinkController;
     </div>
 </div>
 <script src="public/js/bootstrap.bundle.min.js"></script>
-<?php
-if(isset($_POST['submit'])){
-    $link = new LinkController();
-    $link->createLink();
-}
-?>
 </body>
 </html>

@@ -2,9 +2,10 @@
 namespace App\Controller;
 use App\Helper\Helper;
 use App\Model\DB;
-use function Couchbase\defaultDecoder;
 
 class LinkController extends DB {
+    private $original_link;
+    private $short_link;
 
     public function getLinks($sessionId){
         //See All links created by the user who logged in
@@ -15,29 +16,34 @@ class LinkController extends DB {
         return $result;
     }
 
-    public function createLink(){
-        //Create Random Unique 6 digit Code with The Helper Class and permitted chars
+    public function createRandomCode(){
+        //Create Random 6 string Code with The Helper Class and permitted chars
         $permitted_chars = 'abcdefghijklmnopqrstuvwxyz1234567890';
         $short_link = new Helper();
-        $short_link = $short_link->generate_string($permitted_chars, 6);
+        return $short_link->generate_string($permitted_chars, 6);
+    }
 
-        //original link form input
-        $original_link = $_POST['original_link'];
-        $user_id = $_SESSION['id'];
-
-
+    public function findString(){
         //Check https: Or http: character in the Original link
-        if (strpos($original_link,"https:") !== false || strpos($original_link,"http:") !== false){
-            $new_link = explode("/",$original_link);
-            $short_link = $new_link[2] . "/$short_link"; //original link: https://aparat.com/url-short-test //short link: aparat.com/224fpp
+        if (strpos($this->original_link,"https:") !== false || strpos($this->original_link,"http:") !== false){
+            $new_link = explode("/",$this->original_link);
+            $this->short_link = $new_link[2] . "/{$this->createRandomCode()}"; //original link: https://aparat.com/url-short-test //short link: aparat.com/224fpp
         } else {
-            $new_link = explode("/",$original_link);
-            $original_link = "http://" . $_POST['original_link']; //if the original link: aparat.com/url-short-test Combine http:// with original link
-            $short_link = $new_link[0] . "/$short_link";  //short link: aparat.com/224fpp
+            $new_link = explode("/",$this->original_link);
+            $this->original_link = "http://" . $_POST['original_link']; //if the original link: aparat.com/url-short-test Combine http:// with original link
+            $this->short_link = $new_link[0] . "/{$this->createRandomCode()}";  //short link: aparat.com/224fpp
         }
+    }
 
-        //Insert Original Link and Short Link and user_id to links table
-        $sql = "INSERT INTO links (original_link,short_link,user_id) VALUES ('$original_link','$short_link','$user_id')";
+    public function createLink(){
+        //original link From input Form and set private Property
+        $this->original_link = $_POST['original_link'];
+        $user_id = $_SESSION['id'];
+        //Run findString Method to Set original_link and short_link to private Property
+        $this->findString();
+
+        //Insert Original Link and Short Link From Private Property and user_id Variable to links table
+        $sql = "INSERT INTO links (original_link,short_link,user_id) VALUES ('$this->original_link','$this->short_link','$user_id')";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         header("Location: /link/panel.php");
@@ -52,12 +58,16 @@ class LinkController extends DB {
         return $result;
     }
 
-    //Update Original Link in Database
+    //Manual Update Original Link and Automatically Short Link in Database
     public function update($original_link,$id,$sessionId){
-        $sql = "UPDATE links SET original_link = ? WHERE id = ? AND user_id = ?";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$original_link,$id,$sessionId]);
+        //original link From update Method Parameter and set private Property
+        $this->original_link = $original_link;
+        //Run findString Method to Set original_link and short_link to private Property
+        $this->findString();
 
+        $sql = "UPDATE links SET original_link = ?, short_link = ? WHERE id = ? AND user_id = ?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$original_link,$this->short_link,$id,$sessionId]);
         header("Location: /link/panel.php");
     }
 

@@ -6,11 +6,11 @@
             <form action="register.php" method="post">
                 <label for="fullname" class="form-label">نام کامل</label>
                 <div class="mb-3">
-                    <input type="text" class="form-control" id="fullname" name="fullname" placeholder="مثال: رضا" required>
+                    <input type="text" class="form-control" id="fullname" name="fullname" required>
                 </div>
                 <label for="email" class="form-label">آدرس ایمیل</label>
                 <div class="mb-3">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="مثال: reza@gmail.com" required>
+                    <input type="email" class="form-control text-start" id="email" name="email" required>
                 </div>
                 <?php
                 if( !empty( $_REQUEST['FailedMessage'] ) )
@@ -20,7 +20,7 @@
                 ?>
                 <label for="password" class="form-label">رمز عبور</label>
                 <div class="mb-3">
-                    <input type="password" class="form-control" id="password" name="password" placeholder="مثال: 123456" required>
+                    <input type="password" class="form-control" id="password" name="password" required>
                 </div>
                 <button type="submit" name="submit" class="btn btn-primary px-4">ثبت نام</button>
                 <br><br>

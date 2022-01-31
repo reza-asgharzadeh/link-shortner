@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2022 at 02:25 PM
+-- Generation Time: Jan 31, 2022 at 05:27 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -31,9 +31,7 @@ CREATE TABLE `links` (
   `id` mediumint(8) UNSIGNED NOT NULL,
   `user_id` mediumint(8) UNSIGNED NOT NULL,
   `original_link` varchar(250) NOT NULL,
-  `short_link` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `short_link` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------

@@ -12,7 +12,7 @@
             <form action="login.php" method="post">
                 <label for="email" class="form-label">ایمیل</label>
                 <div class="mb-3">
-                    <input type="email" class="form-control" id="email" name="email" required>
+                    <input type="email" class="form-control text-start" id="email" name="email" required>
                 </div>
                 <label for="password" class="form-label">رمز عبور</label>
                 <div class="mb-3">
