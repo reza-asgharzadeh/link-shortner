@@ -6,7 +6,7 @@ class UserController extends DB{
     public function register($name,$email,$password)
     {
         $sql = "SELECT * FROM users where email=? LIMIT 1";
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->connect->prepare($sql);
         $stmt->execute([$email]);
         $record = $stmt->fetch();
 
@@ -18,7 +18,7 @@ class UserController extends DB{
 
         //register user with OOP and PDO
         $sql = "INSERT INTO users (name,email,password) VALUES (?,?,?)";
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->connect->prepare($sql);
         $stmt->execute([$name,$email,$password]);
 
         $SuccessMessage = "شما با موفقیت ثبت نام کرده اید لطفا وارد شوید...";
@@ -29,7 +29,7 @@ class UserController extends DB{
     {
         //login user with OOP and PDO
         $sql = "SELECT * FROM users where email=? LIMIT 1";
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->connect->prepare($sql);
         $stmt->execute([$email]);
         $record = $stmt->fetch();
 

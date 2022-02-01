@@ -10,7 +10,7 @@ class LinkController extends DB {
     public function getLinks($sessionId){
         //See All links created by the user who logged in
         $sql = "SELECT * FROM links WHERE user_id = ?";
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->connect->prepare($sql);
         $stmt->execute([$sessionId]);
         $result = $stmt->fetchAll();
         return $result;
@@ -44,7 +44,7 @@ class LinkController extends DB {
 
         //Insert Original Link and Short Link From Private Property and user_id Variable to links table
         $sql = "INSERT INTO links (original_link,short_link,user_id) VALUES ('$this->original_link','$this->short_link','$user_id')";
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->connect->prepare($sql);
         $stmt->execute();
         header("Location: /link/panel.php");
     }
@@ -52,7 +52,7 @@ class LinkController extends DB {
     //see edit page
     public function edit($id,$sessionId){
         $sql = "SELECT * FROM links WHERE id = ? AND user_id = ?";
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->connect->prepare($sql);
         $stmt->execute([$id,$sessionId]);
         $result = $stmt->fetch();
         return $result;
@@ -66,7 +66,7 @@ class LinkController extends DB {
         $this->findString();
 
         $sql = "UPDATE links SET original_link = ?, short_link = ? WHERE id = ? AND user_id = ?";
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->connect->prepare($sql);
         $stmt->execute([$original_link,$this->short_link,$id,$sessionId]);
         header("Location: /link/panel.php");
     }
@@ -74,7 +74,7 @@ class LinkController extends DB {
     //Delete Record
     public function delete($id,$sessionId){
         $sql = "DELETE FROM links WHERE id = ? AND user_id = ?";
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->connect->prepare($sql);
         $stmt->execute([$id,$sessionId]);
 
         header("Location: /link/panel.php");
