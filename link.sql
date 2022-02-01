@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 31, 2022 at 05:27 PM
+-- Generation Time: Feb 01, 2022 at 07:30 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -56,7 +56,6 @@ CREATE TABLE `users` (
 --
 ALTER TABLE `links`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `short_link` (`short_link`) USING HASH,
   ADD KEY `FK` (`user_id`);
 
 --

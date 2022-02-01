@@ -14,12 +14,13 @@ class UserController extends DB{
         if ($record){
             $FailedMessage = "با این ایمیل قبلا ثبت نام کرده اید...";
             header("Location:register.php?FailedMessage={$FailedMessage}");
+            exit;
         }
 
-        //register user with OOP and PDO
+        //if the email Doesn't exist register user with OOP and PDO
         $sql = "INSERT INTO users (name,email,password) VALUES (?,?,?)";
         $stmt = $this->connect->prepare($sql);
-        $stmt->execute([$name,$email,$password]);
+        $stmt->execute([$name, $email, $password]);
 
         $SuccessMessage = "شما با موفقیت ثبت نام کرده اید لطفا وارد شوید...";
         header("Location:login.php?SuccessMessage={$SuccessMessage}");
