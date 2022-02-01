@@ -2,24 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63942045-252c-48f3-952d-264009bb4f96" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controller/LinkController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controller/LinkController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/check/delete.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check/destroy.php" beforeDir="false" afterPath="$PROJECT_DIR$/check/destroy.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/check/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/check/edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/link.sql" beforeDir="false" afterPath="$PROJECT_DIR$/link.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/link.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/panel.php" beforeDir="false" afterPath="$PROJECT_DIR$/panel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/راهنمای استفاده از برنامه.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/check/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/check/update.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -52,6 +46,7 @@
       <option name="presentableId" value="Default" />
       <updated>1643614989180</updated>
       <workItem from="1643614990637" duration="12735000" />
+      <workItem from="1643690490178" duration="1052000" />
     </task>
     <servers />
   </component>

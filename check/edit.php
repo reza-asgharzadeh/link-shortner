@@ -1,9 +1,13 @@
 <?php
 require "../bootstrap/autoload.php";
 use App\Controller\LinkController;
+if (isset($_SESSION['email'])) {
     $links = new LinkController();
-    $link = $links->edit($_GET['id'],$_SESSION['id']);
+    $link = $links->edit($_GET['id'], $_SESSION['id']);
     $_SESSION['link_id'] = $link['id'];
+} else {
+    header("Location: /link/login.php");
+}
 ?>
 <!doctype html>
 <html lang="fa" dir="rtl">
